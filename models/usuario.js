@@ -35,7 +35,8 @@ const UsuarioSchema = Schema({
 
 // Quita _v y password del JSON que se devuelve
 UsuarioSchema.methods.toJSON = function() {
-    const { _v, password, ...userInfo } = this.toObject();
+    const { _v, password, _id, ...userInfo } = this.toObject();
+    userInfo.uid = _id;
     return userInfo;
 }
 
